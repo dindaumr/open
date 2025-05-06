@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Sayang</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0000;
+            color: #333;
+            text-align: center;
+        }
+        .slide {
+            display: none;
+            padding: 50px;
+        }
+        .active {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #26282A;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .btn:hover {
+            background-color: #343434;
+        }
+        img.cute {
+            width: 400px;
+            margin-top: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide active" id="slide1">
+    <img src="./gambar1.jpg" class="cute" alt="gambar pertama" /><br>
+    <button class="btn" onclick="nextSlide()">Mulai</button>
+</div>
+
+<div class="slide" id="slide2">
+    <h1>Happy Birthday Sayangg</h1>
+    <p>dengarnya sambil buat permohonan yaa..</p>
+    <img src="./gambar2.jpg" class="cute" alt="gambar kedua" />
+    <audio id="audio1">
+        <source src="./lagu3.mpeg" type="audio/mpeg">
+        Lagu tidak tersedia.
+    </audio><br>
+    <button class="btn" onclick="nextSlide()">Lanjut</button>
+</div>
+
+<div class="slide" id="slide3">
+    <h2>Dibaca ya Suratnya...</h2>
+    <img src="./gambar4.jpg" class="cute" alt="animasi buka surat" />
+</div>
+
+<div class="slide" id="slide4">
+    <h2>Ucapan untukmu...</h2>
+    <p>
+        yeyy.. selamat ulang tahun Sayang semoga panjang umur, sehat selalu, 
+        semoga cepat dapat kerja yang tetap supaya smo terkumpul banyak uang hehe.. <br>
+        harapannya semoga kamu tetap jadi kamu dan semoga jadi pribadi lebih baik lagi.. <br>
+        Btw aku first time ba beken bagini untuk cowo anjaii jadi tida tau mo ba kata-kata apa hehe.. <br>
+        Sayang selain ini aku so dapa bikin hadiah cuma aku tidak tau mo kirim di mana huhu.. 
+        kalo mo tanya sama kamu so tida surprise lagi dengan kalo mo bilang lagi aku 
+        tako kamu tidak mo trima karna kamu so tau semua masalah yang ada jadi pertanyaannya 
+        kamu mau mo btrima itu hadiah dari aku yang cantik nan imut ini? oke mau yeayyy.. krim di wa yaa lokasinya wkwk.. <br>
+        sekali lagi happy birthday sayang hidup lebih lama lagi soalnya aku butuh kamu hidup di hidup li aku 💝
+    </p>
+    <button class="btn" onclick="nextSlide()">Slide Terakhir</button>
+</div>
+
+<div class="slide" id="slide5">
+    <h2>I Love You 3000</h2>
+    <h2>Terima kasih sudah menjadi kamu. Aku cinta kamu!</h2>
+    <img src="./gambar3.jpg" class="cute" alt="gambar terakhir" />
+    
+</div>
+
+<script>
+    let currentSlide = 1;
+
+    function stopAllAudio() {
+        const audios = document.querySelectorAll("audio");
+        audios.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    }
+
+    function nextSlide() {
+        document.getElementById("slide" + currentSlide).classList.remove("active");
+        stopAllAudio();
+        currentSlide++;
+        document.getElementById("slide" + currentSlide).classList.add("active");
+
+        // Play audio on specific slides
+        if (currentSlide === 2) {
+            document.getElementById("audio1").play();
+        }
+        if (currentSlide === 4) {
+            document.getElementById("audio2").play();
+        }
+
+        // Auto next from slide 3
+        if (currentSlide === 3) {
+            setTimeout(() => nextSlide(), 4000);
+        }
+    }
+</script>
+
+</body>
+</html>
